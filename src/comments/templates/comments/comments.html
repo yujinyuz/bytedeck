@@ -28,7 +28,9 @@
           {% if request.user.is_staff %}
           <a href="{% url 'profiles:profile_detail' comment.user.profile.id %}">{{comment.user}}</a>
           <small>
-            ({{comment.user.profile.preferred_full_name}}{% if config.display_marks_calculation %} Current Mark: {{comment.user.profile.mark|floatformat:0}}%{% endif %})
+            ({{comment.user.profile.preferred_full_name}}
+            XP: {{comment.user.profile.xp_per_course}}
+            {% if config.display_marks_calculation %} Current Mark: {{comment.user.profile.mark|floatformat:0}}%{% endif %})
           </small>
           {% else %}
             {% firstof comment.user.profile.alias comment.user %}
